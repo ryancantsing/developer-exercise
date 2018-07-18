@@ -1,18 +1,59 @@
 class Exercise
-
-  # Assume that "str" is a sequence of words separated by spaces.
-  # Return a string in which every word in "str" that exceeds 4 characters is replaced with "marklar".
-  # If the word being replaced has a capital first letter, it should instead be replaced with "Marklar".
   def self.marklar(str)
-    # TODO: Implement this method
+    @checkArray = str.split(/ /)
+    for i in 0..@checkArray.length - 1 
+      checkWord = @checkArray[i].split(//)
+      if checkWord.length > 4
+        if checkWord[checkWord.length - 1] === "."
+          if checkWord[0] === checkWord[0].capitalize
+            @checkArray[i] = "Marklar."
+          else 
+            @checkArray[i] = "marklar."
+          end
+        
+        elsif checkWord[checkWord.length - 1] === "!"
+            if checkWord[0] === checkWord[0].capitalize
+              @checkArray[i] = "Marklar!"
+            else 
+              @checkArray[i] = "marklar!"
+            end
+        
+        elsif checkWord[checkWord.length - 1] === "?"
+            if checkWord[0] === checkWord[0].capitalize
+                @checkArray[i] = "Marklar?"
+            else 
+                @checkArray[i] = "marklar?"
+            end
+        else
+            if checkWord[0] === checkWord[0].capitalize
+              @checkArray[i] = "Marklar"
+          else 
+              @checkArray[i] = "marklar"
+          end
+          
+        end
+    end
   end
-
-  # Return the sum of all even numbers in the Fibonacci sequence, up to
-  # the "nth" term in the sequence
-  # eg. the Fibonacci sequence up to 6 terms is (1, 1, 2, 3, 5, 8),
-  # and the sum of its even numbers is (2 + 8) = 10
-  def self.even_fibonacci(nth)
-    # TODO: Implement this method
-  end
-
+  @checkArray.join(" ")
+      
 end
+  def self.even_fibonacci(nth)
+    @array = []
+    @sum = 0
+    @first = 0
+    @second = 1
+    nth.times do
+      @array.push(@second)
+      @third = @first + @second
+      @first = @second
+      @second = @third
+    end
+    for i in 0..@array.length - 1
+      if @array[i] % 2 == 0
+        @sum += @array[i]
+      end
+    end
+    return @sum
+  end
+end
+  
